@@ -1,7 +1,11 @@
-## To team: Run ```shades.py```,  Dependencies: Tensorflow 1.0, OpenCV.  
-## Use existing ```my_model.h5```
+# McSpicy Notes
+- Run ```shades.py```
+- Dependencies: Tensorflow 1.0, OpenCV.  
+- Use existing ```my_model.h5``` as the model for facial points detection
 
+<br>
 
+---
 
 ### [UPDATE]: I will not be responding to issues or emails related to this repo anymore as I am currently occupied with other research commitments. Also, the libraries used are pretty old and outdated. Thank you.
 
