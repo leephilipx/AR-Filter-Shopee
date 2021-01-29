@@ -1,6 +1,6 @@
 # McSpicy Notes
-- Run ```shades.py```
-- Dependencies: Tensorflow 1.0, OpenCV.  
+- Run ```shades.py``` as starting point
+- Dependencies: ```Tensorflow 1.0```, ```OpenCV```, ```NumPy```
 - Use existing ```my_model.h5``` as the model for facial points detection
 
 <br>
