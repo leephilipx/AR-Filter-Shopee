@@ -1,7 +1,8 @@
 # McSpicy Notes
 - Run ```shades.py``` as starting point
-- Dependencies: ```Tensorflow 1.0```, ```OpenCV```, ```NumPy```
+- Own files: ```utils_shopee.py```, ```test_shopee/```
 - Use existing ```my_model.h5``` as the model for facial points detection
+- Dependencies: ```Tensorflow 1.0```, ```OpenCV```, ```NumPy```
 
 <br>
 
