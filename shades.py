@@ -136,10 +136,7 @@ while True:
             item_resized = cv2.resize(item, (item_width, item_height), interpolation = cv2.INTER_CUBIC)
             transparent_region = item_resized[:,:,:3] != 0
             item_center_x = int((points[11][0]+points[12][0])/2)
-            item_center_y = int((points[14][1]+points[10][1]+2)/2)
-            # item_pos_x = np.arange(item_center_x-int(item_width/2), item_center_x+np.ceil(item_width/2).astype(int))
-            # item_pos_y = np.arange(item_center_y-int(item_height/2), item_center_y+np.ceil(item_height/2).astype(int))
-            # print(item_width, item_height, len(item_pos_x), len(item_pos_y), item_pos_x, item_pos_y)
+            item_center_y = int(points[13][1])
         
         # Resize the face_resized_color image back to its original shape
         face_resized_color[item_center_y-int(item_height/2):item_center_y+np.ceil(item_height/2).astype(int), item_center_x-int(item_width/2):item_center_x+np.ceil(item_width/2).astype(int), :][transparent_region] = item_resized[:,:,:3][transparent_region]
