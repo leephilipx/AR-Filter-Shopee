@@ -1,8 +1,0 @@
-0,https://cf.shopee.sg/file/493e3c3eb6981e12ffb57981d9e5537b
-0,https://cf.shopee.sg/file/e2fd3f4ec67ff8ecc530fc85500cd555
-1,https://cf.shopee.com.my/file/4ca9f8e037b4226ded052f4781771532
-1,https://cf.shopee.sg/file/a700c660f575501d4eb95dcd39b41e2e
-2,https://cf.shopee.sg/file/168be27f2a0a6a7476df50c6aa553f72
-2,https://cf.shopee.sg/file/bcb52121d1054448abfa9d39562e161b
-1,https://cf.shopee.sg/file/348389189e5154bccf0898b7ba808be4
-2,https://cf.shopee.sg/file/4b0f3e931301c45554122269de64fa48
