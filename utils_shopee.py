@@ -40,14 +40,15 @@ def remove_background(img, threshold):
 
     return dst
 
-def load_img(image_file_path):
+def load_img(image_file_path, filter_no):
     
     with open("test_shopee/test_shopee_filters.txt", 'r') as f:
-        img_url = f.read()
-        print('Image source:',img_url)
+        img_urls = [line.rstrip('\n').split(',') for line in f.readlines()]
+        cat_no = int(img_urls[filter_no][0])
+        print(f'Image loaded (filter_no={filter_no}, cat_no={cat_no}):\n  {img_urls[filter_no][1]}')
     
     with open(image_file_path, 'wb') as handle:
-        response = requests.get(img_url, stream=True)
+        response = requests.get(img_urls[filter_no][1], stream=True)
         if not response.ok:
             print(response)
         for block in response.iter_content(1024):
@@ -57,4 +58,5 @@ def load_img(image_file_path):
     
     image = cv2.imread(image_file_path, cv2.IMREAD_UNCHANGED)
     image = remove_background(image, 245.)
-    cv2.imwrite(image_file_path, image)
+    
+    return image, cat_no, len(img_urls)
