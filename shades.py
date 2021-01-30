@@ -20,6 +20,9 @@ kernel = np.ones((5, 5), np.uint8)
 image_file_path = 'test_shopee/shopee-image.png'
 item_cat = 1  # {Eyewear, Mask}
 
+# blue specs
+# https://1.bp.blogspot.com/_cQa_T_famDY/S14aWETguLI/AAAAAAAAAx8/RxAJQ1t_KjU/s800/taunus-front-03_1.jpg
+
 # Define filters
 filters = [image_file_path, 'images/sunglasses.png', 'images/sunglasses_2.png', 'images/sunglasses_3.jpg', 'images/sunglasses_4.png', 'images/sunglasses_5.jpg', 'images/sunglasses_6.png']
 filterIndex = 0
@@ -28,7 +31,10 @@ filterIndex = 0
 load_img(image_file_path)
         
 # Load the video
-camera = cv2.VideoCapture(0)
+# camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
 # Keep looping
 while True:
@@ -127,7 +133,7 @@ while True:
             item_resized = cv2.resize(item, (item_width, item_height), interpolation = cv2.INTER_CUBIC)
             transparent_region = item_resized[:,:,:3] != 0
             item_center_x = int((points[7][0]+points[9][0])/2)
-            item_center_x = int((points[10][1]+points[8][1])/2)
+            item_center_y = int((points[10][1]+points[8][1])/2)
 
         elif item_cat == 1:  # Mask
             item_width = int((points[7][0]-points[9][0])*1.3)
@@ -135,10 +141,13 @@ while True:
             item_resized = cv2.resize(item, (item_width, item_height), interpolation = cv2.INTER_CUBIC)
             transparent_region = item_resized[:,:,:3] != 0
             item_center_x = int((points[11][0]+points[12][0])/2)
-            item_center_y = (points[13][1]+points[14][1])/2
+            item_center_y = int((points[13][1]+points[14][1])/2)
         
+        # print(item_width, item_height)
         # Resize the face_resized_color image back to its original shape
         face_resized_color[item_center_y-int(item_height/2):item_center_y+np.ceil(item_height/2).astype(int), item_center_x-int(item_width/2):item_center_x+np.ceil(item_width/2).astype(int), :][transparent_region] = item_resized[:,:,:3][transparent_region]
+        
+        # print(original_shape)
         frame[y:y+h, x:x+w] = cv2.resize(face_resized_color, original_shape, interpolation = cv2.INTER_CUBIC)
     
         # Add KEYPOINTS to the frame2

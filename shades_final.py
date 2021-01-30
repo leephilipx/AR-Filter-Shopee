@@ -20,11 +20,12 @@ my_model = load_my_CNN_model('my_model')
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 
 # Load the video
-#camera = cv2.VideoCapture(0)
 camera = cv2.VideoCapture(0,cv2.CAP_DSHOW)
-camera.set(cv2.CAP_PROP_FRAME_WIDTH, 720)
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, 720) 
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 540)
 
+# 2,https://cf.shopee.sg/file/aeb7bba22a6e95d8838d3281348a1a35
+# 2,https://cf.shopee.sg/file/8b990deab5454469006de80ada6a9082
 
 # Keep looping
 while True:
@@ -106,8 +107,8 @@ while True:
             item_center_y = int((absl[10,1]+avg_eyebrow_y)/2)                   # nose & inner eyebrow
 
         elif (cat_no == 2):  # Mask
-            item_width = int((absl[11,0]-absl[12,0])*2.4)                       # left & right mouth
-            item_height = int((absl[14,1]-absl[10,1])*1.35)                     # nose & lower lip
+            item_width = int((absl[11,0]-absl[12,0])*2.6)                       # left & right mouth
+            item_height = int((absl[14,1]-absl[10,1])*2)                     # nose & lower lip
             item_center_x = int((absl[12,0]+absl[11,0])/2)                      # left & right mouth
             item_center_y = int((absl[10,1]+absl[13,1]+2*absl[14,1])/4)         # nose, upper & 2*lower lip
             
