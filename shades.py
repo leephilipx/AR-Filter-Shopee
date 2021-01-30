@@ -24,9 +24,6 @@ camera = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 720) 
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 540)
 
-# 2,https://cf.shopee.sg/file/aeb7bba22a6e95d8838d3281348a1a35
-# 2,https://cf.shopee.sg/file/8b990deab5454469006de80ada6a9082
-
 # Keep looping
 while True:
             
