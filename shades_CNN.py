@@ -131,6 +131,7 @@ while True:
         face_resized_color[int(points[9][1]):int(points[9][1])+sunglass_height, int(points[9][0]):int(points[9][0])+sunglass_width,:][transparent_region] = sunglass_resized[:,:,:3][transparent_region]
     
         # Resize the face_resized_color image back to its original shape
+        print(original_shape)
         frame[y:y+h, x:x+w] = cv2.resize(face_resized_color, original_shape, interpolation = cv2.INTER_CUBIC)
     
         # Add KEYPOINTS to the frame2
