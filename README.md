@@ -2,9 +2,17 @@
 - Run ```shades.py``` as starting point
 - Own files: ```utils_shopee.py```, ```test_shopee/```
 - Use existing ```my_model.h5``` as the model for facial points detection
-- Dependencies: ```Tensorflow 1.0```, ```OpenCV```, ```NumPy```
+- Dependencies: ```Tensorflow 1.x```, ```Keras 2.3.1```, ```opencv-python```, ```NumPy```
 
-<br>
+# Installation
+conda create -n face python=3.7 -y
+conda activate face
+
+# current CNN training code only works with tensorflow 1.x
+pip install tensorflow=1.14
+# latest keras version compatible with tensorflow 1.x
+pip install keras=2.3.1
+pip install opencv-python
 
 ---
 
