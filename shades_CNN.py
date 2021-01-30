@@ -4,12 +4,16 @@ import sys
 import numpy as np
 import requests
 from utils_shopee import *
+from mtcnn.mtcnn import MTCNN
 
 # Load the model built in the previous step
 my_model = load_my_CNN_model('my_model')
 
 # Face cascade to detect faces
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
+
+# create the detector, using default weights
+detector = MTCNN()
 
 # Define the upper and lower boundaries for a color to be considered "Blue"
 blueLower = np.array([100, 60, 60])
@@ -42,11 +46,9 @@ while True:
     
     # Detect faces
     try:
-        # faces = face_cascade.detectMultiScale(gray, 1.25, 6)
-        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=6, minSize=(90, 90), flags=cv2.CASCADE_SCALE_IMAGE)
+        print(face_cascade.detectMultiScale(gray, 1.25, 6))
+        faces = detector.detect_faces(hsv)
     except Exception as e:
-        camera.release()
-        cv2.destroyAllWindows()
         print(f'\n{str(e)}')
         break
 
@@ -84,8 +86,10 @@ while True:
     #             filterIndex %= 6
     #             continue
         
-    #if (len(faces)>=1): x, y, w, h = faces[0]
-    for (x, y, w, h) in faces:
+    for face in faces:
+        
+        print(face)
+        x, y, w, h = face['box']
         
         # Boundary box containing face
         cv2.rectangle(frame2, (x, y), (x+w, y+h), (0, 255, 0), 2)
@@ -148,11 +152,10 @@ while True:
         filterIndex %= 7
     elif cv2.waitKey(1) & 0xFF == ord("a"):
         print('Load new image')
-    #     load_img()
+        # load_img()
     
     
     
-
 # Cleanup the camera and close any open windows
 camera.release()
 cv2.destroyAllWindows()
