@@ -1,6 +1,5 @@
 from my_CNN_model import *
 import cv2
-import sys
 import numpy as np
 import requests
 from utils_shopee import *
@@ -123,20 +122,20 @@ while True:
         item = cv2.imread(filters[filterIndex], cv2.IMREAD_UNCHANGED)
         
         if item_cat == 0:  # Eyewear
-            item_width = int((points[7][0]-points[9][0])*1.1)
-            item_height = int((points[10][1]-points[8][1])/1.1)
+            item_width = int((points[7][0]-points[9][0])*1.2)
+            item_height = int((points[10][1]-points[8][1]))
             item_resized = cv2.resize(item, (item_width, item_height), interpolation = cv2.INTER_CUBIC)
             transparent_region = item_resized[:,:,:3] != 0
-            item_center_x = int((points[11][0]+points[12][0])/2)
-            item_center_x = int((points[13][1]+points[14][1])/2)
+            item_center_x = int((points[7][0]+points[9][0])/2)
+            item_center_x = int((points[10][1]+points[8][1])/2)
 
         elif item_cat == 1:  # Mask
             item_width = int((points[7][0]-points[9][0])*1.3)
-            item_height = int((points[14][1]-points[10][1])*1.4)
+            item_height = int((points[14][1]-points[10][1])*1.5)
             item_resized = cv2.resize(item, (item_width, item_height), interpolation = cv2.INTER_CUBIC)
             transparent_region = item_resized[:,:,:3] != 0
             item_center_x = int((points[11][0]+points[12][0])/2)
-            item_center_y = int(points[13][1])
+            item_center_y = (points[13][1]+points[14][1])/2
         
         # Resize the face_resized_color image back to its original shape
         face_resized_color[item_center_y-int(item_height/2):item_center_y+np.ceil(item_height/2).astype(int), item_center_x-int(item_width/2):item_center_x+np.ceil(item_width/2).astype(int), :][transparent_region] = item_resized[:,:,:3][transparent_region]
@@ -154,14 +153,16 @@ while True:
     
     
     # If the 'q' key is pressed, stop the loop
-    if cv2.waitKey(1) & 0xFF == ord("q"):
+    if cv2.waitKey(1) & 0xFF == ord("q"):    # KILL
         break
-    elif cv2.waitKey(1) & 0xFF == ord("z"):
+    elif cv2.waitKey(1) & 0xFF == ord("z"):  # Change filter
         filterIndex += 1
-        filterIndex %= 7
-    elif cv2.waitKey(1) & 0xFF == ord("a"):
-        print('Change category or load new image')
-    #     load_img(image_file_path)
+        filterIndex %= len(filters)
+    elif cv2.waitKey(1) & 0xFF == ord("c"):  # Change category
+        item_cat += 0
+        item_cat %= 2
+    elif cv2.waitKey(1) & 0xFF == ord("v"):  # Change image
+        load_img(image_file_path)
     
     
     
