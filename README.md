@@ -1,4 +1,4 @@
-# Shopee - Try-it-on!
+# Shopee UltraHackathon 2021 - Try-it-on!
 *Team McScipy (H3)*
 
 By leveraging artificial intelligence to perform a) face detection and then b) key point localization, we can pinpoint the location of key features on the user’s face, such as eyes, nose and lips. 
