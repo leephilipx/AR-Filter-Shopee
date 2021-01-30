@@ -133,19 +133,25 @@ while True:
     
         frame2[y:y+h, x:x+w] = cv2.resize(face_resized_color2, original_shape, interpolation = cv2.INTER_CUBIC)
 
-        # Show the frame and the frame2
+    # Show the frame and the frame2
     cv2.imshow("Selfie Filters", frame)
     cv2.imshow("Facial Keypoints", frame2)
     
     
-    #if cv2.waitKey(1) & 0xFF == ord("a"):
-    #    load_img()
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
+    # if cv2.waitKey(1) & 0xFF == ord("a"):
+    #     load_img()
     
     # If the 'q' key is pressed, stop the loop
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
+    elif cv2.waitKey(1) & 0xFF == ord("z"):
+        filterIndex += 1
+        filterIndex %= 7
+    
+    
     
 
 # Cleanup the camera and close any open windows
 camera.release()
 cv2.destroyAllWindows()
+print('>> Session end')
