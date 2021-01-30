@@ -22,3 +22,5 @@
 ## Running the try-it-on demo on laptop webcam
 1. Run ``` python shades.py ```
 
+### Credits
+The code was adapted from, with heavy modifications: https://github.com/acl21/Selfie_Filters_OpenCV
