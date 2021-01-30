@@ -89,6 +89,12 @@ while True:
         [12-14] mouth_right_corner, mouth_center_top_lip, mouth_center_bottom_lip
         '''
 
+        # Note to shopee judges: as you can see, for now we hardcoded the facial key point coordinates
+        # for the 3 classes. There will be many more categories than this in the real world.
+        # to make it easier, we can provide a simple UI for sellers to customize the attachment point
+        # of their product images (if they wish), otherwise they can select from a list of 
+        # pre-defined categories (hat, eyewear, mask etc.) and use our default attachment points.
+
         if (cat_no == 0):  # Hat
             avg_eyebrow_y = (absl[6,1]+absl[8,1])/2                             # height of inner eyebrow
             item_width = int((absl[7,0]-absl[9,0])*1.6)                         # left & right outer eyebrow
