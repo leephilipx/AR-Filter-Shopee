@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1034132861511-vatcu9th8vlta4ach0s9k3fci3jkh7o3.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1034132861511</string>
+    <string name="google_api_key" translatable="false">AIzaSyDo6WzVfoKosotk8Agj5UMpY5xifUK8ytc</string>
+    <string name="google_app_id" translatable="false">1:1034132861511:android:ae8e9b03b932d9843df762</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDo6WzVfoKosotk8Agj5UMpY5xifUK8ytc</string>
+    <string name="google_storage_bucket" translatable="false">facemask-4cc3d.appspot.com</string>
+    <string name="project_id" translatable="false">facemask-4cc3d</string>
+</resources>
