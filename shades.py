@@ -131,12 +131,12 @@ while True:
             item_center_x = int((points[13][1]+points[14][1])/2)
 
         elif item_cat == 1:  # Mask
-            item_width = int((points[7][0]-points[9][0])*1.2)
-            item_height = int((points[10][1]-points[13][1])*1.2)
+            item_width = int((points[7][0]-points[9][0])*1.3)
+            item_height = int((points[14][1]-points[10][1])*1.4)
             item_resized = cv2.resize(item, (item_width, item_height), interpolation = cv2.INTER_CUBIC)
             transparent_region = item_resized[:,:,:3] != 0
             item_center_x = int((points[11][0]+points[12][0])/2)
-            item_center_y = int((points[10][1]+points[13][1])/2)
+            item_center_y = int((points[14][1]+points[10][1]+2)/2)
             # item_pos_x = np.arange(item_center_x-int(item_width/2), item_center_x+np.ceil(item_width/2).astype(int))
             # item_pos_y = np.arange(item_center_y-int(item_height/2), item_center_y+np.ceil(item_height/2).astype(int))
             # print(item_width, item_height, len(item_pos_x), len(item_pos_y), item_pos_x, item_pos_y)
