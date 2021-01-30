@@ -1,6 +1,5 @@
 0,https://cf.shopee.sg/file/a24a76656650c8f27dc99ae777253d87
 0,https://cf.shopee.sg/file/e2fd3f4ec67ff8ecc530fc85500cd555
-0,https://cf.shopee.sg/file/c34fcdd0973b1d94b8098eabc2c477ca
 1,https://cf.shopee.com.my/file/4ca9f8e037b4226ded052f4781771532
 1,https://cf.shopee.sg/file/81ba68ad3cfc1d26ca6be7b1669a807b
 1,https://cf.shopee.sg/file/a700c660f575501d4eb95dcd39b41e2e

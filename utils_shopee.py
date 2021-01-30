@@ -33,7 +33,7 @@ def remove_background(img, threshold):
 
     dst_gray = cv2.cvtColor(dst, cv2.COLOR_BGR2GRAY)
     _, alpha = cv2.threshold(dst_gray, 0, 255, cv2.THRESH_BINARY)
-    b, g, r = cv2.split(dst)
+    r, g, b = cv2.split(dst)
 
     rgba = [r, g, b, alpha]
     dst = cv2.merge(rgba, 4)
