@@ -94,7 +94,7 @@ while True:
 
         if (cat_no == 0):  # Hat
             avg_eyebrow_y = (absl[6,1]+absl[8,1])/2                             # height of inner eyebrow
-            item_width = int((absl[7,0]-absl[9,0])*1.9)                         # left & right outer eyebrow
+            item_width = int((absl[7,0]-absl[9,0])*1.6)                         # left & right outer eyebrow
             item_height = int(item_shape[0]/item_shape[1]*item_width)           # height/width*item_width
             item_center_x = int((absl[7,0]+absl[9,0])/2)                        # left & right outer eyebrow
             item_center_y = int(avg_eyebrow_y-(absl[10,1]-avg_eyebrow_y)*1.5)   # inner eyebrow - n*dist(nose & inner eyebrow)
@@ -107,8 +107,8 @@ while True:
             item_center_y = int((absl[10,1]+avg_eyebrow_y)/2)                   # nose & inner eyebrow
 
         elif (cat_no == 2):  # Mask
-            item_width = int((absl[11,0]-absl[12,0])*3)                       # left & right mouth
-            item_height = int((absl[14,1]-absl[10,1])*2)                     # nose & lower lip
+            item_width = int((absl[11,0]-absl[12,0])*3)                         # left & right mouth
+            item_height = int((absl[14,1]-absl[10,1])*2)                        # nose & lower lip
             item_center_x = int((absl[12,0]+absl[11,0])/2)                      # left & right mouth
             item_center_y = int((absl[10,1]+absl[13,1]+2*absl[14,1])/4)         # nose, upper & 2*lower lip
             
