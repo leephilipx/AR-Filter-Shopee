@@ -1,5 +1,6 @@
 from my_CNN_model import *
 import cv2
+import sys
 import numpy as np
 import requests
 from utils_shopee import *
@@ -38,8 +39,14 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
     # Detect faces
-    # faces = face_cascade.detectMultiScale(gray, 1.25, 6)
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(90, 90), flags=cv2.CASCADE_SCALE_IMAGE)
+    try:
+        # faces = face_cascade.detectMultiScale(gray, 1.25, 6)
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=6, minSize=(90, 90), flags=cv2.CASCADE_SCALE_IMAGE)
+    except Exception as e:
+        camera.release()
+        cv2.destroyAllWindows()
+        print(f'\n{str(e)}')
+        break
 
     # # Add the 'Next Filter' button to the frame
     # frame = cv2.rectangle(frame, (500,10), (620,65), (235,50,50), -1)
@@ -79,7 +86,7 @@ while True:
     for (x, y, w, h) in faces:
         
         # Boundary box containing face
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.rectangle(frame2, (x, y), (x+w, y+h), (0, 255, 0), 2)
         
         # Grab the face
         gray_face = gray[y:y+h, x:x+w]
@@ -128,7 +135,7 @@ while True:
 
         # Show the frame and the frame2
     cv2.imshow("Selfie Filters", frame)
-    #cv2.imshow("Facial Keypoints", frame2)
+    cv2.imshow("Facial Keypoints", frame2)
     
     
     #if cv2.waitKey(1) & 0xFF == ord("a"):

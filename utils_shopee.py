@@ -44,7 +44,7 @@ def load_img():
     
     with open("test_shopee/test_shopee_filters.txt", 'r') as f:
         img_url = f.read()
-        print('image source:',img_url)
+        print('Image source:',img_url)
     
     with open('test_shopee/shopee-image.jpg', 'wb') as handle:
         response = requests.get(img_url, stream=True)
