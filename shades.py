@@ -36,19 +36,20 @@ while True:
     frame2 = np.copy(frame)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    # Add the 'Next Filter' button to the frame
-    frame = cv2.rectangle(frame, (500,10), (620,65), (235,50,50), -1)
-    cv2.putText(frame, "NEXT FILTER", (512, 37), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
-
+    
     # Detect faces
-    faces = face_cascade.detectMultiScale(gray, 1.25, 6)
+    # faces = face_cascade.detectMultiScale(gray, 1.25, 6)
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(90, 90), flags=cv2.CASCADE_SCALE_IMAGE)
 
-    # Determine which pixels fall within the blue boundaries and then blur the binary image
-    blueMask = cv2.inRange(hsv, blueLower, blueUpper)
-    blueMask = cv2.erode(blueMask, kernel, iterations=2)
-    blueMask = cv2.morphologyEx(blueMask, cv2.MORPH_OPEN, kernel)
-    blueMask = cv2.dilate(blueMask, kernel, iterations=1)
+    # # Add the 'Next Filter' button to the frame
+    # frame = cv2.rectangle(frame, (500,10), (620,65), (235,50,50), -1)
+    # cv2.putText(frame, "NEXT FILTER", (512, 37), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+
+    # # Determine which pixels fall within the blue boundaries and then blur the binary image
+    # blueMask = cv2.inRange(hsv, blueLower, blueUpper)
+    # blueMask = cv2.erode(blueMask, kernel, iterations=2)
+    # blueMask = cv2.morphologyEx(blueMask, cv2.MORPH_OPEN, kernel)
+    # blueMask = cv2.dilate(blueMask, kernel, iterations=1)
 
     # # Find contours (bottle cap in my case) in the image
     # (cnts, _) = cv2.findContours(blueMask.copy(), cv2.RETR_EXTERNAL,
@@ -76,7 +77,10 @@ while True:
         
     #if (len(faces)>=1): x, y, w, h = faces[0]
     for (x, y, w, h) in faces:
-    
+        
+        # Boundary box containing face
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        
         # Grab the face
         gray_face = gray[y:y+h, x:x+w]
         color_face = frame[y:y+h, x:x+w]
@@ -127,9 +131,9 @@ while True:
     #cv2.imshow("Facial Keypoints", frame2)
     
     
-    if cv2.waitKey(1) & 0xFF == ord("a"):
-        load_img()
-    elif cv2.waitKey(1) & 0xFF == ord("q"):
+    #if cv2.waitKey(1) & 0xFF == ord("a"):
+    #    load_img()
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
     
     # If the 'q' key is pressed, stop the loop
